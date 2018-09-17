@@ -1,1 +1,1 @@
-# mental_arithmetic
+# Mental Arithmetic Trainer
