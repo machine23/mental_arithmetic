@@ -8,34 +8,34 @@
 </template>
 
 <script>
-import StartScreen from './components/StartScreen.vue'
-import Question from './components/Question.vue'
+import StartScreen from "./components/StartScreen.vue";
+import Question from "./components/Question.vue";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
     StartScreen,
     Question
   },
   data() {
     return {
-      state: 'start'
-    }
+      state: "start"
+    };
   },
   methods: {
     onStart() {
-      this.state = 'training'
+      this.state = "training";
     },
     onStop() {
-      this.state = 'start'
+      this.state = "start";
     }
   }
-}
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
