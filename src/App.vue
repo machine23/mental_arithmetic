@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <start-screen v-if="state == 'start'"/>
-    <question v-else-if="state == 'training'"/>
+    <start-screen v-if="state == 'start'" @onStart="onStart"/>
+    <question v-else-if="state == 'training'" @onStop="onStop"/>
     <div v-else>Error</div>
   </div>
 </template>
@@ -20,6 +20,14 @@ export default {
   data() {
     return {
       state: 'start'
+    }
+  },
+  methods: {
+    onStart() {
+      this.state = 'training'
+    },
+    onStop() {
+      this.state = 'start'
     }
   }
 }

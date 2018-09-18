@@ -1,5 +1,8 @@
 <template>
-    <h1>Question</h1>
+    <div>
+        <h1>Question</h1>
+        <button @click="$emit('onStop')">Stop</button>
+    </div>
 </template>
 
 <script>
