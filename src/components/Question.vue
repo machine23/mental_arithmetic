@@ -1,7 +1,7 @@
 <template>
   <form class="question__form" @submit.prevent="onSubmit">
     <label>
-      {{ x }} + {{ y }} =
+      {{ question.x }} {{ question.action }} {{ question.y }} =
       <input type="text" v-model.number="userAnswer" autofocus>
     </label>
   </form>
@@ -13,38 +13,50 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * diff) + min;
 }
 
+function getRandomChoice(choices) {
+  let index = Math.floor(Math.random() * choices.length);
+  return choices[index];
+}
+
+class Question {
+  constructor() {
+    this.x = getRandomInt(0, 100);
+    this.y = getRandomInt(0, 100);
+    this.action = getRandomChoice('+-');
+
+    if (this.action === '+') {
+      this.answer = this.x + this.y;
+    } else {
+      this.answer = this.x - this.y;
+    }
+  }
+
+  check(answer) {
+    return this.answer === answer;
+  }
+}
+
 export default {
   name: "Question",
   data() {
     return {
-      x: getRandomInt(0, 100),
-      y: getRandomInt(0, 100),
-      userAnswer: null
-    };
-  },
-  computed: {
-    answer() {
-      return this.x + this.y;
+      question: new Question(),
+      userAnswer: null,
     }
   },
+  
   methods: {
     onSubmit() {
       console.log('submit');
-      if (this.checkAnswer()) {
+      if (this.question.check(this.userAnswer)) {
         console.log('good');
-        this.renew();
+        this.question = new Question();
       } else {
         console.log('not good');
       }
-    },
-    renew() {
-      this.x = getRandomInt(0, 100);
-      this.y = getRandomInt(0, 100);
       this.userAnswer = null;
     },
-    checkAnswer() {
-      return this.userAnswer == this.answer;
-    }
+    
   }
 };
 </script>
@@ -56,8 +68,9 @@ export default {
 input {
   font-size: 32px;
   border: none;
-  border-bottom: 1px solid #333;
+  /* border-bottom: 1px solid #eee; */
   outline: none;
   width: 100px;
+  text-align: center;
 }
 </style>
