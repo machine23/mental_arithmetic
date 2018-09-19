@@ -2,20 +2,20 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <start-screen v-if="state == 'start'" @onStart="onStart"/>
-    <question v-else-if="state == 'training'" @onStop="onStop"/>
+    <training v-else-if="state == 'training'" @onStop="onStop"/>
     <div v-else>Error</div>
   </div>
 </template>
 
 <script>
 import StartScreen from "./components/StartScreen.vue";
-import Question from "./components/Question.vue";
+import Training from "./components/Training.vue";
 
 export default {
   name: "app",
   components: {
     StartScreen,
-    Question
+    Training
   },
   data() {
     return {

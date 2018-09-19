@@ -2,7 +2,7 @@
   <form class="question__form" @submit.prevent="onSubmit">
     <label>
       {{ question.x }} {{ question.action }} {{ question.y }} =
-      <input type="text" v-model.number="userAnswer" autofocus>
+      <input type="text" v-model.number="userAnswer" ref="userInput" autofocus>
     </label>
   </form>
 </template>
@@ -44,15 +44,21 @@ export default {
       userAnswer: null,
     }
   },
+
+  mounted() {
+    this.$refs.userInput.focus();
+  },
   
   methods: {
     onSubmit() {
       console.log('submit');
       if (this.question.check(this.userAnswer)) {
         console.log('good');
+        this.$emit('success');
         this.question = new Question();
       } else {
         console.log('not good');
+        this.$emit('onError');
       }
       this.userAnswer = null;
     },
