@@ -19,9 +19,9 @@ function getRandomChoice(choices) {
 }
 
 class Question {
-  constructor() {
-    this.x = getRandomInt(0, 100);
-    this.y = getRandomInt(0, 100);
+  constructor(min=0, max=100) {
+    this.x = getRandomInt(min, max);
+    this.y = getRandomInt(min, max);
     this.action = getRandomChoice('+-');
 
     if (this.action === '+') {
@@ -40,9 +40,19 @@ export default {
   name: "Question",
   data() {
     return {
-      question: new Question(),
+      question: new Question(this.min, this.max),
       userAnswer: null,
     }
+  },
+  props: {
+    min: {
+      type: Number,
+      default: 0
+    },
+    max: {
+      type: Number,
+      default: 100
+    },
   },
 
   mounted() {
@@ -55,7 +65,7 @@ export default {
       if (this.question.check(this.userAnswer)) {
         console.log('good');
         this.$emit('success');
-        this.question = new Question();
+        this.question = new Question(this.min, this.max);
       } else {
         console.log('not good');
         this.$emit('onError');
