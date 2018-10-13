@@ -8,9 +8,6 @@
       <div>
         Errors: {{ errors }}
       </div>
-      <div>
-        Time: 
-      </div>
     </div>
     <div class="settings">
       <div><label>Min: <input type="number" v-model.number="min"></label></div>
@@ -52,7 +49,7 @@ export default {
   display: flex;
   max-width: 300px;
   margin: 30px auto;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .settings {
   display: flex;
