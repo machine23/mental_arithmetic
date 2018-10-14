@@ -79,7 +79,10 @@ export default {
 
 <style scoped>
 .question__form {
-  font-size: 32px;
+  font-size: 52px;
+  padding: 18px;
+  margin-top: 60px;
+  margin-bottom: 40px;
 }
 input {
   font-size: 32px;
