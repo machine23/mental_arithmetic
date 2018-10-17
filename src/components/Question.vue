@@ -82,10 +82,10 @@ export default {
   font-size: 52px;
   padding: 18px;
   margin-top: 60px;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 input {
-  font-size: 32px;
+  font-size: 52px;
   border: none;
   /* border-bottom: 1px solid #eee; */
   outline: none;
