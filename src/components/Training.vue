@@ -12,8 +12,9 @@
     <div class="settings">
       <div><label>Min: <input type="number" v-model.number="min"></label></div>
       <div><label>Max: <input type="number" v-model.number="max"></label></div>
+      <div><label>Number: <input type="number"  v-model.number="numItems"></label></div>
     </div>
-    <question @success="onSuccess" @onError="onError" :min="min" :max="max"/>
+    <question @success="onSuccess" @onError="onError" :min="min" :max="max" :numItems="numItems"/>
     <button @click="$emit('onStop')">Stop</button>
   </div>
 </template>
@@ -31,6 +32,7 @@ export default {
       errors: 0,
       min: 0,
       max: 100,
+      numItems: 3,
     };
   },
   methods: {
